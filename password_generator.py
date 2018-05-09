@@ -2,7 +2,7 @@
 
 """
 Author          : Surya Teja <suryateja1919@gmail.com>
-Description     : Password Generator
+Description     : Random Password Generator
 Website         : https://suryasr007.github.io
 """
 

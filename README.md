@@ -1,26 +1,31 @@
 # Random password Generator
 ##### A simple and custom random password generator.
+ * Generate a simple password of default length 6-16.
+ * Generate a password with custom properties.
+ * Generate a password from given characters.
+ * Generate Non Duplicate Password
 
-## How to Use
+## Usage
  * Install the package.
+ * Import the package.
+ * Create an instance
+ * Modify the default properties. (Optional)
+ * Generate the password (Default length of password 6-16 unless specified via properties).
+
 ``` bash
   pip install random-password-generator
 ```
- * Import the package.
+
 ``` python
   from random-password-generator import PasswordGenerator
-```
- * Create an instance
-``` python
+
   pwo = PasswordGenerator()
-```
- * Simple generation
-``` python
   pwo.generate()
 ```
 
+
 ## Configuration
-We can set properties such as
+
 | property   |                          Description                 | Default |
 | ---------- |------------------------------------------------------| ------- |
 | minlen     |   Minimum length of the password                     | 6 |
@@ -29,3 +34,36 @@ We can set properties such as
 | minlchars  |   Minimum lower case characters required in password | 1 |
 | minnumbers |   Minimum numbers required in password               | 1 |
 | minschars  |   Minimum special characters in the password         | 1 |
+
+
+## Generate a custom password
+``` python
+  pwo = PasswordGenerator()
+
+  # All properties are optional
+  pwo.minlen = 30
+  pwo.maxlen = 30
+  pwo.minuchars = 2
+  pwo.minlchars = 3
+  pwo.minnumbers = 1
+  pwo.minschars = 1
+
+  pwo.generate()
+```
+
+## Generate a password from given characters
+``` python
+  pwo = PasswordGenerator()
+
+  # It takes two arguments
+  # required characters and length of required password
+  pwo.shuffle_password('sdafasdf#@&^#&234u8', 20)
+```
+
+## Generate Non Duplicate Password
+``` python
+  pwo = PasswordGenerator()
+
+  # length of required password
+  pwo.shuffle_password(20)
+```
