@@ -16,7 +16,7 @@ setup(
     version=VERSION,
     description='Simple and custom random password generator for python',
     long_description=long_description,
-    url='https://github.com/suryasr007/password-generator',
+    url='https://github.com/suryasr007/random-password-generator',
     author='Surya Teja Reddy Valluri',
     author_email='94suryateja@gmail.com',
     license='MIT',
