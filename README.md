@@ -67,3 +67,6 @@
   # length of required password
   pwo.shuffle_password(20)
 ```
+
+## License
+ * MIT
