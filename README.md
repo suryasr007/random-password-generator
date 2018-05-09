@@ -17,7 +17,7 @@
 ```
 
 ``` python
-  from random-password-generator import PasswordGenerator
+  from password_generator import PasswordGenerator
 
   pwo = PasswordGenerator()
   pwo.generate()
