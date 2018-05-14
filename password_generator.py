@@ -39,12 +39,16 @@ class PasswordGenerator():
         self.minlchars = 1
         self.minnumbers = 1
         self.minschars = 1
+        self.excludeuchars = ""
+        self.excludelchars = ""
+        self.excludenumbers = ""
+        self.excludeschars = ""
 
         self.lower_chars = string.ascii_lowercase
         self.upper_chars = string.ascii_uppercase
         self.numbers_list = string.digits
         self._schars = ['!','#','$','%', '^', '&', '*', '(', ')', ',', '.', '-', '_', '+', '=', '<', '>', '?']
-        self._allchars = list(self.lower_chars) + list(self.upper_chars) + list(self.numbers_list) + list(self._schars)
+        self._allchars = list(self.lower_chars) + list(self.upper_chars) + list(self.numbers_list) + self._schars
 
 
     def generate(self):
@@ -60,16 +64,18 @@ class PasswordGenerator():
         if collectiveMinLength > self.minlen:
             self.minlen = collectiveMinLength
 
-        final_pass = [random.choice(self.lower_chars) for i in range(self.minlchars)]
-        final_pass += [random.choice(self.upper_chars) for i in range(self.minuchars)]
-        final_pass += [random.choice(self.numbers_list) for i in range(self.minnumbers)]
-        final_pass += [random.choice(self._schars) for i in range(self.minschars)]
+        final_pass = [random.choice(list(set(self.lower_chars) - set(self.excludelchars))) for i in range(self.minlchars)]
+        final_pass += [random.choice(list(set(self.upper_chars) - set(self.excludeuchars))) for i in range(self.minuchars)]
+        final_pass += [random.choice(list(set(self.numbers_list) - set(self.excludenumbers))) for i in range(self.minnumbers)]
+        final_pass += [random.choice(list(set(self._schars) - set(self.excludeschars))) for i in range(self.minschars)]
+        
 
         currentpasslen = len(final_pass)
+        all_chars = list(set(self._allchars) - set(list(self.excludelchars) + list(self.excludeuchars) + list(self.excludenumbers) + list(self.excludeschars)))
 
         if len(final_pass) < self.maxlen:
             randlen = random.randint(self.minlen, self.maxlen)
-            final_pass += [random.choice(self._allchars) for i in range(randlen-currentpasslen)]
+            final_pass += [random.choice(all_chars) for i in range(randlen-currentpasslen)]
 
         random.shuffle(final_pass)
         return ''.join(final_pass)
