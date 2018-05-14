@@ -35,18 +35,31 @@
 | minnumbers |   Minimum numbers required in password               | 1 |
 | minschars  |   Minimum special characters in the password         | 1 |
 
+## Update V1.1.0
+From version 1.1.0, Characters can be excluded from the required password by setting the properties on PasswordGenerator object
+
+example:
+``` python
+  pwo = PasswordGenerator()
+
+  pwo.excludeuchars = "ABCDEFTUVWXY" # (Optional)
+  pwo.excludelchars = "abcdefghijkl" # (Optional)
+  pwo.excludenumbers = "012345" # (Optional)
+  pwo.excludeschars = "!$%^" # (Optional)
+```
+
 
 ## Generate a custom password
 ``` python
   pwo = PasswordGenerator()
 
   # All properties are optional
-  pwo.minlen = 30
-  pwo.maxlen = 30
-  pwo.minuchars = 2
-  pwo.minlchars = 3
-  pwo.minnumbers = 1
-  pwo.minschars = 1
+  pwo.minlen = 30 # (Optional)
+  pwo.maxlen = 30 # (Optional)
+  pwo.minuchars = 2 # (Optional)
+  pwo.minlchars = 3 # (Optional)
+  pwo.minnumbers = 1 # (Optional)
+  pwo.minschars = 1 # (Optional)
 
   pwo.generate()
 ```

@@ -68,7 +68,7 @@ class PasswordGenerator():
         final_pass += [random.choice(list(set(self.upper_chars) - set(self.excludeuchars))) for i in range(self.minuchars)]
         final_pass += [random.choice(list(set(self.numbers_list) - set(self.excludenumbers))) for i in range(self.minnumbers)]
         final_pass += [random.choice(list(set(self._schars) - set(self.excludeschars))) for i in range(self.minschars)]
-        
+
 
         currentpasslen = len(final_pass)
         all_chars = list(set(self._allchars) - set(list(self.excludelchars) + list(self.excludeuchars) + list(self.excludenumbers) + list(self.excludeschars)))
