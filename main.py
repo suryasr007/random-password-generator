@@ -22,6 +22,10 @@ self.excludeschars = ""
 
 pwg = PasswordGenerator()
 
+password_generator_args = {
+    'minlen': fields.Int(validate=lambda val: val > 0)
+}
+
 class PasswordGenerator(Resource):
     def get(self):
         parser.add_argument('minlen', type=int)
