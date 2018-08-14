@@ -1,5 +1,7 @@
-from flask import Flask
+from flask import Flask, jsonify, abort
 from flask_restful import Resource, Api, reqparse
+from webargs import fields, validate
+from webargs.flaskparser import use_args
 from password_generator import PasswordGenerator
 
 app = Flask(__name__)
@@ -23,28 +25,28 @@ self.excludeschars = ""
 pwg = PasswordGenerator()
 
 password_generator_args = {
-    'minlen': fields.Int(validate=lambda val: val > 0)
+    'minlen': fields.Int(missing=6, validate=lambda val: val > 0),
+    'maxlen': fields.Int(missing=16, validate=lambda val: val > 0),
+    'minuchars': fields.Int(missing=1, validate=lambda val: val > 0),
+    'minuchars': fields.Int(missing=1, validate=lambda val: val > 0),
+    'minlchars': fields.Int(missing=1, validate=lambda val: val > 0),
+    'excludeuchars': fields.Str(missing=''),
+    'excludelchars': fields.Str(missing=''),
+    'excludenumbers': fields.Str(missing=''),
+    'excludeschars': fields.Str(missing='')
 }
 
 class PasswordGenerator(Resource):
-    def get(self):
-        parser.add_argument('minlen', type=int)
-        parser.add_argument('maxlen', type=int)
-        parser.add_argument('minuchars', type=int)
-        parser.add_argument('minlchars', type=int)
-        parser.add_argument('excludeuchars', type=str)
-        parser.add_argument('excludelchars', type=str)
-        parser.add_argument('excludenumbers', type=str)
-        parser.add_argument('excludeschars', type=str)
 
-        args = parser.parse_args()
-        # td = {}
-        # for k,v in args.items():
-        #     if v is not None:
-        #         td[k] = v
+    @use_args(password_generator_args)
+    def get(self, args):
+        pwg.__dict__.update(args)
+        try:
+            res = pwg.generate()
+        except ValueError as e:
+            abort(404, str(e))
         
-        # val = pwg.generate()
-        return args
+        return jsonify({'password':res})
 
 
 
@@ -52,4 +54,4 @@ class PasswordGenerator(Resource):
 api.add_resource(PasswordGenerator, '/generate')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

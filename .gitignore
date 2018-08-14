@@ -1,4 +1,8 @@
 test.py
 venv/
-.vscode/
 *.pyc
+.vscode/*
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json

@@ -57,7 +57,7 @@ class PasswordGenerator():
             raise ValueError("Character length should not be negative")
 
         if self.minlen > self.maxlen:
-            raise ValueError("Minimum length cannot be greater than maximum length")
+            raise ValueError("Minimum length cannot be greater than maximum length. The default maximum length is 16.")
 
         collectiveMinLength = self.minuchars + self.minlchars + self.minnumbers + self.minschars
 
