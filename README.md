@@ -81,5 +81,7 @@ example:
   pwo.shuffle_password(20)
 ```
 
+## API
+
 ## License
  * MIT
