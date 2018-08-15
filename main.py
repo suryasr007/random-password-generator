@@ -81,11 +81,10 @@ class NonDuplicatePassword(Resource):
         
         return jsonify({'password':res})
 
-class Home(Resource):
-    def get(self):
-        return {'for more info':'https://github.com/suryasr007/random-password-generator/blob/master/README.md'}
+@app.route('/')
+def home():
+    return 'for more info: <a>https://github.com/suryasr007/random-password-generator/blob/master/README.md</a>'
 
-api.add_resource(Home, '/')
 api.add_resource(PasswordGenerator, '/generate')
 api.add_resource(ShufflePassword, '/shuffle')
 api.add_resource(NonDuplicatePassword, '/nonduplicatepassword')
