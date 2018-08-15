@@ -8,6 +8,7 @@ Website         : https://suryasr007.github.io
 
 import string
 import random
+from copy import deepcopy
 
 
 class PasswordGenerator():
@@ -90,14 +91,16 @@ class PasswordGenerator():
 
     def non_duplicate_password(self, maxlen):
         """Generate a non duplicate key of given length"""
+        allchars = deepcopy(chars)
         final_pass = []
         try:
             for i in range(maxlen):
-                character = random.choice(self._allchars)
-                element_index = self._allchars.index(character)
+                character = random.choice(allchars)
+                element_index = allchars.index(character)
                 final_pass.append(character)
-                self._allchars.pop(element_index)
-        except IndexError as ie:
+                allchars.pop(element_index)
+        except IndexError as e:
             raise ValueError('Length should less than 77 characters.')
+            
         random.shuffle(final_pass)
         return ''.join(final_pass)

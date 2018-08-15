@@ -10,6 +10,7 @@ api = Api(app, prefix="/api/v1")
 parser = reqparse.RequestParser()
 
 '''
+Defaults
 self.minlen = 6
 self.maxlen = 16
 self.minuchars = 1
@@ -36,22 +37,55 @@ password_generator_args = {
     'excludeschars': fields.Str(missing='')
 }
 
+shuffle_password_args = {
+    'maxlen': fields.Int(required={'message': 'maximum length required', 'code': 400}),
+    'password': fields.Str(required={'message': 'Password required', 'code': 400})
+}
+
+non_duplicate_args = {
+    'maxlen': fields.Int(required={'message': 'maximum length required', 'code': 400})
+}
+
 class PasswordGenerator(Resource):
 
     @use_args(password_generator_args)
     def get(self, args):
-        pwg.__dict__.update(args)
         try:
+            pwg.__dict__.update(args)
             res = pwg.generate()
-        except ValueError as e:
+        except Exception as e:
             abort(404, str(e))
         
         return jsonify({'password':res})
 
 
+class ShufflePassword(Resource):
 
+    @use_args(shuffle_password_args)
+    def get(self, args):
+        try:
+            res = pwg.shuffle_password(password=args["password"], maxlen=args["maxlen"])
+        except Exception as e:
+            abort(404, str(e))
+        
+        return jsonify({'password':res})
+
+class NonDuplicatePassword(Resource):
+
+    @use_args(non_duplicate_args)
+    def get(self, args):
+        try:
+            res = pwg.non_duplicate_password(maxlen=args["maxlen"])
+        except Exception as e:
+            abort(404, str(e))
+        
+        # Bug over here. Solve it
+        return jsonify({'password':res})
 
 api.add_resource(PasswordGenerator, '/generate')
+api.add_resource(ShufflePassword, '/shuffle')
+api.add_resource(NonDuplicatePassword, '/nonduplicatepassword')
+
 
 if __name__ == '__main__':
     app.run()
