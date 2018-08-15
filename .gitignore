@@ -1,1 +1,4 @@
 test.py
+venv/
+*.pyc
+.vscode/*

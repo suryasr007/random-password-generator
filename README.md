@@ -3,7 +3,7 @@
  * Generate a simple password of default length 6-16.
  * Generate a password with custom properties.
  * Generate a password from given characters.
- * Generate Non Duplicate Password
+ * Generate Non Duplicate Password.
 
 ## Usage
  * Install the package.
