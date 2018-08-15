@@ -91,7 +91,7 @@ class PasswordGenerator():
 
     def non_duplicate_password(self, maxlen):
         """Generate a non duplicate key of given length"""
-        allchars = deepcopy(chars)
+        allchars = deepcopy(self._allchars)
         final_pass = []
         try:
             for i in range(maxlen):
