@@ -79,9 +79,13 @@ class NonDuplicatePassword(Resource):
         except Exception as e:
             abort(404, str(e))
         
-        # Bug over here. Solve it
         return jsonify({'password':res})
 
+class Home(Resource):
+    def get(self):
+        return {'for more info':'https://github.com/suryasr007/random-password-generator/blob/master/README.md'}
+
+api.add_resource(Home, '/')
 api.add_resource(PasswordGenerator, '/generate')
 api.add_resource(ShufflePassword, '/shuffle')
 api.add_resource(NonDuplicatePassword, '/nonduplicatepassword')
