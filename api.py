@@ -83,7 +83,7 @@ class NonDuplicatePassword(Resource):
 
 @app.route('/')
 def home():
-    return 'for more info: <a>https://github.com/suryasr007/random-password-generator/blob/master/README.md</a>'
+    return "for more info: <a href='https://github.com/suryasr007/random-password-generator/blob/master/README.md'> RPG docs</a>"
 
 api.add_resource(PasswordGenerator, '/generate')
 api.add_resource(ShufflePassword, '/shuffle')
@@ -91,4 +91,4 @@ api.add_resource(NonDuplicatePassword, '/nonduplicate')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
