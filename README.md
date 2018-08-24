@@ -6,21 +6,26 @@
  * Generate Non Duplicate Password.
 
 ## API (GET Request)
- * Base_url: https://random-pg.herokuapp.com//api/v1
- * Generate simple password Base_url/api/v1/generate
+ * Base_url: https://random-pg.herokuapp.com
+ * Generate simple password ```/api/v1/generate```
    * Optianal Attributes can be provided as params  
      eg: 
-      * /generate?minlen=16  
-      * /generate?minlen=16&minlchars=5
+     ```
+      /api/v1/generate?minlen=16  
+      /api/v1/generate?minlen=16&minlchars=5
+     ```
  * Generate a custom password from givin characters
    * Mandatory attributes can be provided as params  
      eg: 
-      * /shuffle?password=sdjbfbfB&maxlen=14  
+     ```
+      /api/v1/shuffle?password=sdjbfbfB&maxlen=14
+     ```
  * Generate a non duplicate password.  
    * Mandatory Attribute 'maxlen'  
-     eg: 
-      * /nonduplicate?maxlen=14
- 
+     eg:
+     ``` 
+      /nonduplicate?maxlen=14
+     ```
 
 
 ## Usage
