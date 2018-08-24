@@ -87,7 +87,7 @@ def home():
 
 api.add_resource(PasswordGenerator, '/generate')
 api.add_resource(ShufflePassword, '/shuffle')
-api.add_resource(NonDuplicatePassword, '/nonduplicatepassword')
+api.add_resource(NonDuplicatePassword, '/nonduplicate')
 
 
 if __name__ == '__main__':
