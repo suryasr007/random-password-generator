@@ -5,6 +5,24 @@
  * Generate a password from given characters.
  * Generate Non Duplicate Password.
 
+## API (GET Request)
+ * Base_url: https://random-pg.herokuapp.com//api/v1
+ * Generate simple password Base_url/api/v1/generate
+   * Optianal Attributes can be provided as params  
+     eg: 
+      * /generate?minlen=16  
+      * /generate?minlen=16&minlchars=5
+ * Generate a custom password from givin characters
+   * Mandatory attributes can be provided as params  
+     eg: 
+      * /shuffle?password=sdjbfbfB&maxlen=14  
+ * Generate a non duplicate password.  
+   * Mandatory Attribute 'maxlen'  
+     eg: 
+      * /nonduplicate?maxlen=14
+ 
+
+
 ## Usage
  * Install the package.
  * Import the package.
@@ -80,6 +98,8 @@ example:
   # length of required password
   pwo.shuffle_password(20)
 ```
+
+## API
 
 ## License
  * MIT
