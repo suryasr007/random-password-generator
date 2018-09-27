@@ -91,4 +91,4 @@ api.add_resource(NonDuplicatePassword, '/nonduplicate')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
