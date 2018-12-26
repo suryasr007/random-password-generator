@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, abort
+from flask import Flask, jsonify, abort, render_template
 from flask_restful import Resource, Api, reqparse
 from webargs import fields, validate
 from webargs.flaskparser import use_args
@@ -83,7 +83,7 @@ class NonDuplicatePassword(Resource):
 
 @app.route('/')
 def home():
-    return "for more info: <a href='https://github.com/suryasr007/random-password-generator/blob/master/README.md#api-get-request'> RPG docs</a>"
+    return render_template("home.html")
 
 api.add_resource(PasswordGenerator, '/generate')
 api.add_resource(ShufflePassword, '/shuffle')
