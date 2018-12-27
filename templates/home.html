@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- CSS -->
+    <!-- CSS for flask <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"> -->
+    <link rel="stylesheet" href="../static/css/home.css">
+    <title>Random password</title>
+  </head>
+  <body>
+
+    <div class="container vh-100">
+      <div class="row h-100 justify-content-center align-content-center">
+        <div class="rounded row justify-content-center align-content-center bg-dark">
+          <!-- Header -->
+          <header class="container-fluid d-block">
+            <h1>Random password generator</h1>
+          </header>
+          <!-- Form -->
+          <form class="rounded-bottom w-100 bg-light" action="" method="">
+            <!-- Password input is disabled. it should be filled by the API -->
+            <div class="form-group">
+              <input class="w-100" type="text" name="pwd" placeholder="Click the button" disabled>
+            </div>
+            <!-- Generate password button-->
+            <div class="text-center">
+              <button type="submit" class="btn btn-secondary">Generate password</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
