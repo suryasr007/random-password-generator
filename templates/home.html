@@ -20,14 +20,14 @@
             <h1>Random password generator</h1>
           </header>
           <!-- Form -->
-          <form class="rounded-bottom w-100 bg-light" action="" method="">
+          <form class="rounded-bottom w-100 bg-light" action="/g" method="POST">
             <!-- Password input is disabled. it should be filled by the API -->
             <div class="form-group">
-              <input class="w-100" type="text" name="pwd" placeholder="Click the button" disabled>
+              <input class="w-100" name="pwd" value="{{ pwd }}" type="text" readonly>
             </div>
             <!-- Generate password button-->
             <div class="text-center">
-              <button type="submit" class="btn btn-secondary">Generate password</button>
+              <button type="submit" name="generate" value="1" class="btn btn-secondary">Generate password</button>
             </div>
           </form>
         </div>

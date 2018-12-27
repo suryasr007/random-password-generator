@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, abort, render_template
+from flask import Flask, jsonify, abort, render_template, request
 from flask_restful import Resource, Api, reqparse
 from webargs import fields, validate
 from webargs.flaskparser import use_args
@@ -84,6 +84,24 @@ class NonDuplicatePassword(Resource):
 @app.route('/')
 def home():
     return render_template("home.html")
+
+
+@app.route('/g', methods=["POST"])
+def g():
+    """
+    Generate method for front-end.
+    :return: Gets password from API and returns a string
+    """
+    print(request.form.get("generate"))
+
+    # Check for generate = 1
+    if not int(request.form.get("generate")) == 1:
+        return "Something went wrong :( Try pressing the button again"
+
+    # Generate password
+    pwd = pwg.generate()
+    return render_template("home.html", pwd=pwd)
+
 
 api.add_resource(PasswordGenerator, '/generate')
 api.add_resource(ShufflePassword, '/shuffle')
