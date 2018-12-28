@@ -83,7 +83,14 @@ class NonDuplicatePassword(Resource):
 
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return render_template("home.html",
+                           minlen=6,
+                           maxlen=16,
+                           minuchars=1,
+                           minlchars=1,
+                           minnumbers=1,
+                           minschars=1
+                           )
 
 
 @app.route('/g', methods=["POST"])
@@ -92,15 +99,31 @@ def g():
     Generate method for front-end.
     :return: Gets password from API and returns a string
     """
-    print(request.form.get("generate"))
-
     # Check for generate = 1
     if not int(request.form.get("generate")) == 1:
         return "Something went wrong :( Try pressing the button again"
 
+    # Set pwg args
+    pwg.minlen = int(request.form.get("minlen"))
+    pwg.maxlen = int(request.form.get("maxlen"))
+    pwg.minuchars = int(request.form.get("minuchars"))
+    pwg.minlchars = int(request.form.get("minlchars"))
+    pwg.minnumbers = int(request.form.get("minnumbers"))
+    pwg.minschars = int(request.form.get("minschars"))
+
     # Generate password
     pwd = pwg.generate()
-    return render_template("home.html", pwd=pwd)
+
+
+    return render_template("home.html",
+                           pwd=pwd,
+                           minlen=request.form.get("minlen"),
+                           maxlen=request.form.get("maxlen"),
+                           minuchars=request.form.get("minuchars"),
+                           minlchars=request.form.get("minlchars"),
+                           minnumbers=request.form.get("minnumbers"),
+                           minschars=request.form.get("minschars")
+                           )
 
 
 api.add_resource(PasswordGenerator, '/generate')
