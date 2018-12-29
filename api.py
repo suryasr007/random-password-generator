@@ -3,6 +3,7 @@ from flask_restful import Resource, Api, reqparse
 from webargs import fields, validate
 from webargs.flaskparser import use_args
 from password_generator import PasswordGenerator
+import re
 
 app = Flask(__name__)
 api = Api(app, prefix="/api/v1")
@@ -84,27 +85,44 @@ class NonDuplicatePassword(Resource):
         return jsonify({'password': res})
 
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def home():
-    return render_template("home.html",
-                           minlen=6,
-                           maxlen=16,
-                           minuchars=1,
-                           minlchars=1,
-                           minnumbers=1,
-                           minschars=1
-                           )
 
+    if request.method == "GET":
+        return render_template("home.html",
+                               minlen=6,
+                               maxlen=16,
+                               minuchars=1,
+                               minlchars=1,
+                               minnumbers=1,
+                               minschars=1
+                               )
 
-@app.route('/g', methods=["POST"])
-def g():
-    """
-    Generate method for front-end.
-    :return: Gets password from API and returns a string
-    """
     # Check for generate = 1
     if not int(request.form.get("generate")) == 1:
         return "Something went wrong :( Try pressing the button again"
+
+    # Check for chars to be excluded
+    if not request.form.get("excludechars") == "":
+        excludechars = request.form.get("excludechars")
+        lowertoexclude = ""
+        uppertoexclude = ""
+        numberstoexclude = ""
+        specialtoexclude = ""
+        for c in range(0, len(excludechars)):
+            if re.match("^[a-z]", excludechars[c]):
+                lowertoexclude += excludechars[c]
+            elif re.match("^[A-Z]", excludechars[c]):
+                uppertoexclude += excludechars[c]
+            elif re.match("^[0-9]", excludechars[c]):
+                numberstoexclude += excludechars[c]
+            elif not re.match("^[a-zA-Z0-9_]*$", excludechars[c]):
+                specialtoexclude += excludechars[c]
+
+        pwg.excludelchars = lowertoexclude
+        pwg.excludeuchars = uppertoexclude
+        pwg.excludenumbers = numberstoexclude
+        pwg.excludeschars = specialtoexclude
 
     # Set pwg args
     pwg.minlen = int(request.form.get("minlen"))
@@ -124,7 +142,8 @@ def g():
                            minuchars=request.form.get("minuchars"),
                            minlchars=request.form.get("minlchars"),
                            minnumbers=request.form.get("minnumbers"),
-                           minschars=request.form.get("minschars")
+                           minschars=request.form.get("minschars"),
+                           excludechars=request.form.get("excludechars")
                            )
 
 

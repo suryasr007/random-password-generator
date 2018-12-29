@@ -22,7 +22,7 @@
             <h1>Random password generator</h1>
           </header>
           <!-- Form -->
-          <form class="rounded-bottom w-100 bg-light" action="/g" method="POST">
+          <form class="rounded-bottom w-100 bg-light" action="/" method="POST">
             <!-- Password input is disabled. it should be filled by the API -->
             <div class="form-group">
               <input class="w-100 text-center" name="pwd" placeholder="Click the button" readonly type="text" value="{{ pwd }}">
@@ -76,6 +76,13 @@
                   <input id="minschars" max="99" min="0" name="minschars" type="number" value="{{ minschars }}">
                 </div>
               </div>
+              <div class="row mb-2">
+                <div class="col-3">
+                  <label for="excludenumbers">Exclude this characters:</label>
+                </div>
+                <div class="col-9">
+                  <input class="w-100" id="excludechars" name="excludechars" type="text" placeholder="Insert numbers, letters and special chars to be excluded here" value="{{ excludechars }}">
+                </div>
             </div>
           </form>
         </div>
