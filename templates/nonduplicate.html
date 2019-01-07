@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container vh-100">
+  <div class="row h-100 justify-content-center align-content-center">
+    <div class="rounded col-12 col-md-9 p-0 justify-content-center align-content-center bg-dark">
+      <!-- Header -->
+      <header class="container-fluid d-block">
+        <h1>Random password generator</h1>
+      </header>
+      <!-- Form -->
+      <form class="rounded-bottom w-100 bg-light" action="/nonduplicate" method="POST">
+        <!-- Error messages-->
+        {% if error %}
+        <div class="alert alert-danger">
+            <p class="m-0">{{ error }}</p>
+         </div>
+        {% endif %}
+        <!-- Info messages -->
+        {% if info %}
+        <div class="alert alert-info">
+            <p class="m-0">{{ info }}</p>
+         </div>
+        {% endif %}
+        <!-- Password input is disabled. it should be filled by the API -->
+        <div class="form-group">
+          <input class="w-100 text-center" name="pwd" placeholder="Click the button" readonly type="text" value="{{ pwd }}">
+        </div>
+        <!-- Generate password button-->
+        <div class="text-center">
+          <button type="submit" name="generate" value="1" class="btn btn-secondary">Generate password</button>
+        </div>
+        <!-- More Options-->
+        <p class="text-center m-0">
+          <small>
+            <a aria-controls="collapseMoreOptions" aria-expanded="false" data-toggle="collapse" href="#collapseMoreOptions">
+              More Options <i class="fa fa-chevron-down"></i>
+            </a>
+          </small>
+        </p>
+        <div class="collapse container" id="collapseMoreOptions">
+          <div class="row mb-2">
+            <div class="col-3">
+              <label for="minlen">Min. length:</label>
+            </div>
+            <div class="col-3">
+              <input id="minlen" max="99" min="1" name="minlen" type="number" value="{{ minlen }}">
+            </div>
+            <div class="col-3">
+              <label for="maxlen">Max. length:</label>
+            </div>
+            <div class="col-3">
+              <input id="maxlen" max="99" min="2" name="maxlen" type="number" value="{{ maxlen }}">
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <label for="minuchars">Min. uppercase chars:</label>
+            </div>
+            <div class="col-3">
+              <input id="minuchars" max="99" min="0" name="minuchars" type="number" value="{{ minuchars }}">
+            </div>
+            <div class="col-3">
+              <label for="minlchars">Min. lowercase chars:</label>
+            </div>
+            <div class="col-3">
+              <input id="minlchars" max="99" min="0" name="minlchars" type="number" value="{{ minlchars }}">
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <label for="minnumbers">Min. numbers:</label>
+            </div>
+            <div class="col-3">
+              <input id="minnumbers" max="99" min="0" name="minnumbers" type="number" value="{{ minnumbers }}">
+            </div>
+            <div class="col-3">
+              <label for="minschars">Min. specia chars:</label>
+            </div>
+            <div class="col-3">
+              <input id="minschars" max="99" min="0" name="minschars" type="number" value="{{ minschars }}">
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
+              <label for="excludechars">Exclude this characters:</label>
+            </div>
+            <div class="col-9">
+              <input class="w-100" id="excludechars" name="excludechars" type="text" placeholder="Insert numbers, letters and special chars to be excluded here" value="{{ excludechars }}">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
