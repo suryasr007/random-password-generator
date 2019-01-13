@@ -4,13 +4,16 @@ h1 {
   padding: 0.5em;
   padding-bottom: 0;
 }
+
 header {
   margin-bottom: 2em;
 }
-form {
+
+.form {
   padding: 1.5em;
   margin: 0;
 }
+
 body {
   background: #ddd;
 }
