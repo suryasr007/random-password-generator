@@ -132,8 +132,11 @@
               <div class="form rounded-bottom w-100 bg-light">
                 <!-- Chars input-->
                 <form id="shuffle-form">
+                  <div id="shuffle-error-empty" class="d-none alert alert-danger">
+                    <p class="m-0">Characters field must not be empty</p>
+                  </div>
                   <div class="form-group">
-                    <input type="text" name="password" value="" placeholder="Characters" class="w-100 text-center">
+                    <input id="char-input" type="text" name="password" value="" placeholder="Characters" class="w-100 text-center">
                   </div>
                   <div class="form-group text-center">
                     <label for="maxlen">Length:</label>

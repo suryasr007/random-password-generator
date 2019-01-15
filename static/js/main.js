@@ -48,6 +48,13 @@ $(document).ready(function() {
 
   // password from given characters. (Request to /api/v1/shuffle)
   $("#shuffle-btn").click(function() {
+
+    if($("#shuffle-form .form-group #char-input").val() == "") {
+      $("#shuffle-error-empty").removeClass("d-none");
+    } else {
+      $("#shuffle-error-empty").addClass("d-none");
+    }
+
     var request = "./api/v1/shuffle?";
     request += $("#shuffle-form").serialize();
     $.get(request, function(data, status) {
