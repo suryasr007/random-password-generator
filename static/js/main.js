@@ -27,9 +27,9 @@ $(document).ready(function() {
     return $.param(toBeExcluded);
   }
 
-  // Normal password. (Request to /api/v1/generate)
+  // Normal password. (Request to /api/generate)
   $("#normal-btn").click(function() {
-    var request = "./api/v1/generate?";
+    var request = "./api/generate?";
     request += $("#normal-form").serialize();
     request += "&" + parseExcludeChars($("#normal-form #excludechars").val());
     $.get(request, function(data, status) {
@@ -37,16 +37,16 @@ $(document).ready(function() {
     });
   });
 
-  // nonduplicate password. (Request to /api/v1/nonduplicate)
+  // nonduplicate password. (Request to /api/nonduplicate)
   $("#nonduplicate-btn").click(function() {
-    var request = "./api/v1/nonduplicate?";
+    var request = "./api/nonduplicate?";
     request += $("#nonduplicate-form").serialize();
     $.get(request, function(data, status) {
       $("#nonduplicate-pwd").val(data.password);
     });
   });
 
-  // password from given characters. (Request to /api/v1/shuffle)
+  // password from given characters. (Request to /api/shuffle)
   $("#shuffle-btn").click(function() {
 
     if($("#shuffle-form .form-group #char-input").val() == "") {
@@ -55,7 +55,7 @@ $(document).ready(function() {
       $("#shuffle-error-empty").addClass("d-none");
     }
 
-    var request = "./api/v1/shuffle?";
+    var request = "./api/shuffle?";
     request += $("#shuffle-form").serialize();
     $.get(request, function(data, status) {
       $("#shuffle-pwd").val(data.password);
