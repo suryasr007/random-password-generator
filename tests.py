@@ -1,6 +1,8 @@
+"""
+Test Cases for random password generator
+"""
+
 import unittest
-
-
 from password_generator import PasswordGenerator
 
 class TestRPG(unittest.TestCase):
@@ -17,7 +19,12 @@ class TestRPG(unittest.TestCase):
         pg.minlen = length
         pg.maxlen = length
         self.assertEqual(len(pg.generate()), length)
-
+    
+    def test_exclude_chars(self):
+        """Test generate() for excluding chars"""
+        pg = PasswordGenerator()
+        pg.excludeuchars="A"
+        self.assertNotIn("A",pg.generate())
 
 if __name__ == '__main__':
     unittest.main()
