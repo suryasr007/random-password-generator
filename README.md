@@ -1,4 +1,4 @@
-# Random password Generator
+# Random password Generator [![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
 ##### A simple and custom random password generator.
  * Generate a simple password of default length 6-16.
  * Generate a password with custom properties.
