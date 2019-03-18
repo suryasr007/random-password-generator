@@ -5,7 +5,7 @@ Flask-RESTful==0.3.7
 gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
-MarkupSafe==1.0
+MarkupSafe==1.1.1
 marshmallow==3.0.0b13
 pytz==2018.5
 six==1.11.0
