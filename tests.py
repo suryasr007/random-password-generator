@@ -26,5 +26,6 @@ class TestRPG(unittest.TestCase):
         pg.excludeuchars="A"
         self.assertNotIn("A",pg.generate())
 
+
 if __name__ == '__main__':
     unittest.main()
