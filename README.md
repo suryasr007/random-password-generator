@@ -1,4 +1,8 @@
-# Random password Generator [![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
+# Random password Generator
+[![PyPI version](https://img.shields.io/badge/PYPI%20-V%202.0-blue.svg)](https://pypi.org/project/random-password-generator)
+
+
+ [![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
 ##### A simple and custom random password generator.
  * Generate a simple password of default length 6-16.
  * Generate a password with custom properties.
