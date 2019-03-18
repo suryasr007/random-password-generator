@@ -16,12 +16,12 @@ class PasswordGenerator():
 
     We can set properties such as
 
-    | minlen     |   Minimum length of the password | 6
-    | maxlen     |   Maximum length of the password | 16
-    | minuchars  |   Minimum upper case characters required in password | 1
-    | minlchars  |   Minimum lower case characters required in password | 1
-    | minnumbers |   Minimum numbers required in password               | 1
-    | minschars  |   Minimum special characters in the password         | 1
+    | minlen     |   Minimum length of the password | 6\n
+    | maxlen     |   Maximum length of the password | 16\n
+    | minuchars  |   Minimum upper case characters required in password | 1\n
+    | minlchars  |   Minimum lower case characters required in password | 1\n
+    | minnumbers |   Minimum numbers required in password               | 1\n
+    | minschars  |   Minimum special characters in the password         | 1\n
 
     Methods implemented in this class are
 

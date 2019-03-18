@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <title>Random password</title>
+</head>
+
+<body>
+  <div class="container vh-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="rounded col-12 col-md-9 p-0 bg-dark">
+        <!-- Header -->
+        <header class="container-fluid d-block">
+          <h1>Random password generator</h1>
+        </header>
+        <!-- End Header -->
+        <div class="rounded-bottom w-100 bg-light">
+          <ul class="nav nav-tabs flex-column flex-sm-row" id="myTab" role="tablist">
+            <li class="nav-item flex-sm-fill text-sm-center">
+              <a class="nav-link active" id="normal-tab" data-toggle="tab" href="#normal" role="tab" aria-controls="normal" aria-selected="true">Normal</a>
+            </li>
+            <li class="nav-item flex-sm-fill text-sm-center">
+              <a class="nav-link" id="non-duplicate-tab" data-toggle="tab" href="#non-duplicate" role="tab" aria-controls="non-duplicate" aria-selected="false">Non-duplicate</a>
+            </li>
+            <li class="nav-item flex-sm-fill text-sm-center">
+              <a class="nav-link" id="shuffle-tab" data-toggle="tab" href="#shuffle" role="tab" aria-controls="shuffle" aria-selected="false">From given characters</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="normal" role="tabpanel" aria-labelledby="home-tab">
+              <div class="form rounded-bottom w-100 bg-light">
+                <!-- Password input is disabled. it should be filled by the API -->
+                <div class="form-group">
+                  <input id="normal-pwd" class="w-100 text-center" name="pwd" placeholder="Click the button" readonly type="text">
+                </div>
+                <!-- Generate password button-->
+                <div class="text-center">
+                  <button id="normal-btn" class="btn btn-outline-primary">Generate password</button>
+                </div>
+                <!-- More Options-->
+                <p class="text-center m-0">
+                  <small>
+                    <a aria-controls="collapseMoreOptions" aria-expanded="false" data-toggle="collapse" href="#collapseMoreOptions">
+                      More Options <i class="fa fa-chevron-down"></i>
+                    </a>
+                  </small>
+                </p>
+                <div class="collapse container" id="collapseMoreOptions">
+                  <form id="normal-form">
+                    <div class="row mb-2">
+                      <div class="col-3">
+                        <label for="minlen">Min. length:</label>
+                      </div>
+                      <div class="col-3">
+                        <input id="minlen" max="99" min="1" name="minlen" type="number" value="6">
+                      </div>
+                      <div class="col-3">
+                        <label for="maxlen">Max. length:</label>
+                      </div>
+                      <div class="col-3">
+                        <input id="maxlen" max="99" min="2" name="maxlen" type="number" value="16">
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-3">
+                        <label for="minuchars">Min. uppercase chars:</label>
+                      </div>
+                      <div class="col-3">
+                        <input id="minuchars" max="99" min="0" name="minuchars" type="number" value="1">
+                      </div>
+                      <div class="col-3">
+                        <label for="minlchars">Min. lowercase chars:</label>
+                      </div>
+                      <div class="col-3">
+                        <input id="minlchars" max="99" min="0" name="minlchars" type="number" value="1">
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-3">
+                        <label for="minnumbers">Min. numbers:</label>
+                      </div>
+                      <div class="col-3">
+                        <input id="minnumbers" max="99" min="0" name="minnumbers" type="number" value="1">
+                      </div>
+                      <div class="col-3">
+                        <label for="minschars">Min. specia chars:</label>
+                      </div>
+                      <div class="col-3">
+                        <input id="minschars" max="99" min="0" name="minschars" type="number" value="1">
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-3">
+                        <label for="excludechars">Exclude this characters:</label>
+                      </div>
+                      <div class="col-9">
+                        <input class="w-100" id="excludechars" name="excludechars" type="text" placeholder="Insert numbers, letters and special chars to be excluded here" value="">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="non-duplicate" role="tabpanel" aria-labelledby="contact-tab">
+              <div class="form rounded-bottom w-100 bg-light">
+                <!-- Password input is disabled. it should be filled by the API -->
+                <div class="form-group">
+                  <input id="nonduplicate-pwd" class="w-100 text-center" name="pwd" placeholder="Click the button" readonly type="text" value="">
+                </div>
+                <form id="nonduplicate-form">
+                  <div class="form-group text-center">
+                    <label for="maxlen">Length:</label>
+                    <input type="number" id="maxlen" name="maxlen" min="1" max="77" value="16">
+                  </div>
+                </form>
+                <!-- Generate password button-->
+                <div class="text-center">
+                  <button id="nonduplicate-btn" type="submit" name="generate" value="1" class="btn btn-outline-primary">Generate password</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="shuffle" role="tabpanel" aria-labelledby="contact-tab">
+              <div class="form rounded-bottom w-100 bg-light">
+                <!-- Chars input-->
+                <form id="shuffle-form">
+                  <div id="shuffle-error-empty" class="d-none alert alert-danger">
+                    <p class="m-0">Characters field must not be empty</p>
+                  </div>
+                  <div class="form-group">
+                    <input id="char-input" type="text" name="password" value="" placeholder="Characters" class="w-100 text-center">
+                  </div>
+                  <div class="form-group text-center">
+                    <label for="maxlen">Length:</label>
+                    <input type="number" id="maxlen" name="maxlen" min="1" value="16">
+                  </div>
+                </form>
+                <!-- Generate password button-->
+                <div class="form-group text-center">
+                  <button id="shuffle-btn" class="btn btn-outline-primary">Generate password</button>
+                </div>
+                <!-- Password input is disabled. it should be filled by the API -->
+                <div class="form-group">
+                  <input id="shuffle-pwd" class="w-100 text-center" name="pwd" readonly type="text" value="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="fixed-bottom footer mt-auto py-3">
+    <div class="container">
+      <p class="text-center m-0 text-secondary">
+        Front-end made by <a target="_blank" href="https://github.com/ArthurCueio">Arthur Coelho</a> | Project author: <a target="_blank" href="https://github.com/suryasr007">Surya Teja</a> | <a target="_blank" href="https://github.com/suryasr007/random-password-generator">Github
+          project</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- External scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <!-- Scripts -->
+  <script type=text/javascript src="{{url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

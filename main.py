@@ -1,11 +1,12 @@
-from flask import Flask, jsonify, abort
+from flask import Flask, jsonify, abort, render_template, request
 from flask_restful import Resource, Api, reqparse
 from webargs import fields, validate
 from webargs.flaskparser import use_args
 from password_generator import PasswordGenerator
+import re
 
 app = Flask(__name__)
-api = Api(app, prefix="/api/v1")
+api = Api(app, prefix="/api")
 
 parser = reqparse.RequestParser()
 
@@ -46,6 +47,7 @@ non_duplicate_args = {
     'maxlen': fields.Int(required={'message': 'maximum length required', 'code': 400})
 }
 
+
 class PasswordGenerator(Resource):
 
     @use_args(password_generator_args)
@@ -55,8 +57,8 @@ class PasswordGenerator(Resource):
             res = pwg.generate()
         except Exception as e:
             abort(404, str(e))
-        
-        return jsonify({'password':res})
+
+        return jsonify({'password': res})
 
 
 class ShufflePassword(Resource):
@@ -67,8 +69,9 @@ class ShufflePassword(Resource):
             res = pwg.shuffle_password(password=args["password"], maxlen=args["maxlen"])
         except Exception as e:
             abort(404, str(e))
-        
-        return jsonify({'password':res})
+
+        return jsonify({'password': res})
+
 
 class NonDuplicatePassword(Resource):
 
@@ -78,17 +81,18 @@ class NonDuplicatePassword(Resource):
             res = pwg.non_duplicate_password(maxlen=args["maxlen"])
         except Exception as e:
             abort(404, str(e))
-        
-        return jsonify({'password':res})
 
-@app.route('/')
+        return jsonify({'password': res})
+
+
+@app.route('/', methods=["GET"])
 def home():
-    return "for more info: <a href='https://github.com/suryasr007/random-password-generator/blob/master/README.md#api-get-request'> RPG docs</a>"
+    return render_template("home.html")
+
 
 api.add_resource(PasswordGenerator, '/generate')
 api.add_resource(ShufflePassword, '/shuffle')
 api.add_resource(NonDuplicatePassword, '/nonduplicate')
-
 
 if __name__ == '__main__':
     app.run()

@@ -1,4 +1,4 @@
-# Random password Generator
+# Random password Generator [![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
 ##### A simple and custom random password generator.
  * Generate a simple password of default length 6-16.
  * Generate a password with custom properties.
@@ -7,18 +7,18 @@
 
 ## API (GET Request)
  * Base_url: https://random-pg.herokuapp.com
- * Generate simple password ```/api/v1/generate```
+ * Generate simple password ```/api/generate```
    * Optianal Attributes can be provided as params  
      eg: 
      ```
-      /api/v1/generate?minlen=16  
-      /api/v1/generate?minlen=16&minlchars=5
+      /api/generate?minlen=16  
+      /api/generate?minlen=16&minlchars=5
      ```
  * Generate a custom password from givin characters
    * Mandatory attributes can be provided as params  
      eg: 
      ```
-      /api/v1/shuffle?password=sdjbfbfB&maxlen=14
+      /api/shuffle?password=sdjbfbfB&maxlen=14
      ```
  * Generate a non duplicate password.  
    * Mandatory Attribute 'maxlen'  
@@ -57,6 +57,10 @@
 | minlchars  |   Minimum lower case characters required in password | 1 |
 | minnumbers |   Minimum numbers required in password               | 1 |
 | minschars  |   Minimum special characters in the password         | 1 |
+
+## Update V2.0
+Application is available at following link:
+
 
 ## Update V1.1.0
 From version 1.1.0, Characters can be excluded from the required password by setting the properties on PasswordGenerator object
