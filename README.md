@@ -1,4 +1,6 @@
-# Random password Generator [![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
+# Random password Generator
+[![PyPI version](https://img.shields.io/badge/PYPI-V%202.0.1-blue.svg)](https://pypi.org/project/random-password-generator)
+[![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
 ##### A simple and custom random password generator.
  * Generate a simple password of default length 6-16.
  * Generate a password with custom properties.
@@ -9,7 +11,7 @@
 ## API (GET Request)
  * Base_url: https://random-pg.herokuapp.com
  * Generate simple password ```/api/generate```
-   * Optianal Attributes can be provided as params  
+   * Optional Attributes can be provided as params  
      eg: 
      ```
       /api/generate?minlen=16  
@@ -59,7 +61,7 @@
 | minnumbers |   Minimum numbers required in password               | 1 |
 | minschars  |   Minimum special characters in the password         | 1 |
 
-## Update V2.0
+## Update V2.0.1
 Application is available at following link: https://random-pg.herokuapp.com/
 
 

@@ -3,7 +3,7 @@ from codecs import open
 from os import path
 
 
-VERSION = 'v2.0'
+VERSION = 'v2.0.1'
 
 here = path.abspath(path.dirname(__file__))
 
@@ -16,6 +16,7 @@ setup(
     version=VERSION,
     description='Simple and custom random password generator for python',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     url='https://github.com/suryasr007/random-password-generator',
     author='Surya Teja Reddy Valluri',
     author_email='94suryateja@gmail.com',
@@ -40,7 +41,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Utilities',
-        'Operating System :: MacOS',
         'Operating System :: POSIX'
     ],
     keywords='random password generator different lengths'
