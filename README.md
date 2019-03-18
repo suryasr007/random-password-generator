@@ -4,6 +4,7 @@
  * Generate a password with custom properties.
  * Generate a password from given characters.
  * Generate Non Duplicate Password.
+ * Available at https://random-pg.herokuapp.com/
 
 ## API (GET Request)
  * Base_url: https://random-pg.herokuapp.com
@@ -59,7 +60,7 @@
 | minschars  |   Minimum special characters in the password         | 1 |
 
 ## Update V2.0
-Application is available at following link:
+Application is available at following link: https://random-pg.herokuapp.com/
 
 
 ## Update V1.1.0
