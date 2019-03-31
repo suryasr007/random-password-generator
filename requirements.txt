@@ -6,7 +6,7 @@ gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.1
-marshmallow==3.0.0rc4
+marshmallow==3.0.0rc5
 pytz==2018.9
 six==1.12.0
 webargs==5.2.0
