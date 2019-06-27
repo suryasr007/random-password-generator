@@ -7,8 +7,14 @@ Website         : https://suryasr007.github.io
 """
 
 import string
-import random
+# import random
 from copy import deepcopy
+from random import shuffle, randint
+
+try:
+    from secrets import choice
+except ImportError:
+    from random import choice
 
 
 class PasswordGenerator():
@@ -65,27 +71,27 @@ class PasswordGenerator():
         if collectiveMinLength > self.minlen:
             self.minlen = collectiveMinLength
 
-        final_pass = [random.choice(list(set(self.lower_chars) - set(self.excludelchars))) for i in range(self.minlchars)]
-        final_pass += [random.choice(list(set(self.upper_chars) - set(self.excludeuchars))) for i in range(self.minuchars)]
-        final_pass += [random.choice(list(set(self.numbers_list) - set(self.excludenumbers))) for i in range(self.minnumbers)]
-        final_pass += [random.choice(list(set(self._schars) - set(self.excludeschars))) for i in range(self.minschars)]
+        final_pass = [choice(list(set(self.lower_chars) - set(self.excludelchars))) for i in range(self.minlchars)]
+        final_pass += [choice(list(set(self.upper_chars) - set(self.excludeuchars))) for i in range(self.minuchars)]
+        final_pass += [choice(list(set(self.numbers_list) - set(self.excludenumbers))) for i in range(self.minnumbers)]
+        final_pass += [choice(list(set(self._schars) - set(self.excludeschars))) for i in range(self.minschars)]
 
 
         currentpasslen = len(final_pass)
         all_chars = list(set(self._allchars) - set(list(self.excludelchars) + list(self.excludeuchars) + list(self.excludenumbers) + list(self.excludeschars)))
 
         if len(final_pass) < self.maxlen:
-            randlen = random.randint(self.minlen, self.maxlen)
-            final_pass += [random.choice(all_chars) for i in range(randlen-currentpasslen)]
+            randlen = randint(self.minlen, self.maxlen)
+            final_pass += [choice(all_chars) for i in range(randlen-currentpasslen)]
 
-        random.shuffle(final_pass)
+        shuffle(final_pass)
         return ''.join(final_pass)
 
 
     def shuffle_password(self, password, maxlen):
         """Shuffle the given charactes and return a password from given characters."""
-        final_pass = [random.choice(list(password)) for i in range(int(maxlen))]
-        random.shuffle(final_pass)
+        final_pass = [choice(list(password)) for i in range(int(maxlen))]
+        shuffle(final_pass)
         return ''.join(final_pass)
 
 
@@ -95,12 +101,12 @@ class PasswordGenerator():
         final_pass = []
         try:
             for i in range(maxlen):
-                character = random.choice(allchars)
+                character = choice(allchars)
                 element_index = allchars.index(character)
                 final_pass.append(character)
                 allchars.pop(element_index)
         except IndexError as e:
             raise ValueError('Length should less than 77 characters.')
             
-        random.shuffle(final_pass)
+        shuffle(final_pass)
         return ''.join(final_pass)
