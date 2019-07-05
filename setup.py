@@ -3,7 +3,7 @@ from codecs import open
 from os import path
 
 
-VERSION = 'v2.0.1'
+VERSION = 'v2.1.0'
 
 here = path.abspath(path.dirname(__file__))
 
@@ -29,11 +29,9 @@ setup(
         #   5 - Production/Stable
 
         'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Developers',
         'Intended Audience :: Information Technology',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',

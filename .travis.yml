@@ -9,7 +9,6 @@ matrix:
       dist: xenial
       sudo: true
 install:
-  - pip install codecov
   - pip install -r requirements.txt
 script:
   - python tests.py
