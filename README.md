@@ -1,5 +1,5 @@
 # Random password Generator
-[![PyPI version](https://img.shields.io/badge/PYPI-V%202.0.1-blue.svg)](https://pypi.org/project/random-password-generator)
+[![PyPI version](https://img.shields.io/badge/PYPI-V%202.1.0-blue.svg)](https://pypi.org/project/random-password-generator)
 [![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
 ##### A simple and custom random password generator.
  * Generate a simple password of default length 6-16.
@@ -60,6 +60,10 @@
 | minlchars  |   Minimum lower case characters required in password | 1 |
 | minnumbers |   Minimum numbers required in password               | 1 |
 | minschars  |   Minimum special characters in the password         | 1 |
+
+## Update V2.1.0
+Application uses [secrets](https://docs.python.org/3/library/secrets.html) module instaed of `random` module **whenever** possible.
+
 
 ## Update V2.0.1
 Application is available at following link: https://random-pg.herokuapp.com/
