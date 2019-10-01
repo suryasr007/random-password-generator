@@ -1,0 +1,44 @@
+h1 {
+  text-align: center;
+  color: #ddd;
+  padding: 0.5em;
+  padding-bottom: 0;
+}
+
+header {
+  margin-bottom: 2em;
+}
+
+.form {
+  padding: 1.5em;
+  margin: 0;
+}
+
+body {
+  background: #ddd;
+}
+
+.rounded
+{
+	background-color: #00008b;
+}
+
+.glow {
+  /*font-size: 32px;*/
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  text-align: center;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #33DFFF, 0 0 20px #33DFFF, 0 0 30px #33DFFF, 0 0 40px #33DFFF, 0 0 50px #33DFFF, 0 0 60px #33DFFF, 0 0 70px #33DFFF;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #33DFFF, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue, 0 0 80px #33DFFF;
+  }
+}
