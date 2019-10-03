@@ -19,7 +19,7 @@
       /api/generate?minlen=16  
       /api/generate?minlen=16&minlchars=5
      ```
- * Generate a custom password from givin characters
+ * Generate a custom password from given characters
    * Mandatory attributes can be provided as params  
      eg: 
      ```
