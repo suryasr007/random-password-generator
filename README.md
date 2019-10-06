@@ -121,4 +121,4 @@ example:
 Contributions are welcomed via PR.
 
 ## License
- * MIT
+ * [MIT](LICENSE)
