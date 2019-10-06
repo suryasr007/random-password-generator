@@ -1,8 +1,10 @@
+branches:
+  only: 
+    - master
+
 language: python
 matrix:
   include:
-    - python: "3.3"
-    - python: "3.4"
     - python: "3.5"
     - python: "3.6"
     - python: "3.7"
@@ -12,5 +14,3 @@ install:
   - pip install -r requirements.txt
 script:
   - python tests.py
-after_success:
-  - codecov

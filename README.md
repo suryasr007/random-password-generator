@@ -1,6 +1,8 @@
 # Random password Generator
 [![PyPI version](https://img.shields.io/badge/PYPI-V%202.1.0-blue.svg)](https://pypi.org/project/random-password-generator)
 [![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
+[![Updates](https://pyup.io/repos/github/suryasr007/random-password-generator/shield.svg)](https://pyup.io/repos/github/suryasr007/random-password-generator/)
+
 ##### A simple and custom random password generator.
  * Generate a simple password of default length 6-16.
  * Generate a password with custom properties.
@@ -119,4 +121,4 @@ example:
 Contributions are welcomed via PR.
 
 ## License
- * MIT
+ * [MIT](LICENSE)
