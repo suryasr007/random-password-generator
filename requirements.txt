@@ -7,7 +7,7 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1
 marshmallow==3.2.1
-pytz==2019.2
+pytz==2019.3
 six==1.12.0
 webargs==5.5.1
 Werkzeug==0.16.0
