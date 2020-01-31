@@ -9,5 +9,5 @@ MarkupSafe==1.1.1
 marshmallow==3.3.0
 pytz==2019.3
 six==1.14.0
-webargs==5.5.2
+webargs==5.5.3
 Werkzeug==0.16.1
