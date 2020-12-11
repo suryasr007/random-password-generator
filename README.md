@@ -114,7 +114,7 @@ example:
   pwo = PasswordGenerator()
 
   # length of required password
-  pwo.shuffle_password(20)
+  pwo.non_duplicate_password(20)
 ```
 
 ## Contributions

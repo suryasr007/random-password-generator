@@ -1,9 +1,9 @@
 # -*-coding: utf-8 -*-
 
 """
-Author          : Surya Teja <suryateja1919@gmail.com>
+Author          : Surya Teja <94suryateja@gmail.com>
 Description     : Random Password Generator
-Website         : https://suryasr007.github.io
+Website         : https://github.com/suryasr007
 """
 
 import string

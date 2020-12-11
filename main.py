@@ -39,18 +39,18 @@ password_generator_args = {
 }
 
 shuffle_password_args = {
-    'maxlen': fields.Int(required={'message': 'maximum length required', 'code': 400}),
-    'password': fields.Str(required={'message': 'Password required', 'code': 400})
+    'maxlen': fields.Int(required=True),
+    'password': fields.Str(required=True)
 }
 
 non_duplicate_args = {
-    'maxlen': fields.Int(required={'message': 'maximum length required', 'code': 400})
+    'maxlen': fields.Int(required=True)
 }
 
 
 class PasswordGenerator(Resource):
 
-    @use_args(password_generator_args)
+    @use_args(password_generator_args, location="query")
     def get(self, args):
         try:
             pwg.__dict__.update(args)
@@ -63,7 +63,7 @@ class PasswordGenerator(Resource):
 
 class ShufflePassword(Resource):
 
-    @use_args(shuffle_password_args)
+    @use_args(shuffle_password_args, location="query")
     def get(self, args):
         try:
             res = pwg.shuffle_password(password=args["password"], maxlen=args["maxlen"])
@@ -75,7 +75,7 @@ class ShufflePassword(Resource):
 
 class NonDuplicatePassword(Resource):
 
-    @use_args(non_duplicate_args)
+    @use_args(non_duplicate_args, location="query")
     def get(self, args):
         try:
             res = pwg.non_duplicate_password(maxlen=args["maxlen"])

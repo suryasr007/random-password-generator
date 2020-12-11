@@ -11,6 +11,6 @@ matrix:
       dist: xenial
       sudo: true
 install:
-  - pip install -r requirements.txt
+  - poetry install
 script:
-  - python tests.py
+  - poetry run pytest tests.py
