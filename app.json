@@ -10,8 +10,8 @@
     "addons": [],
     "buildpacks": [
       {
-        "url": "heroku/python"
+        "url": "https://github.com/moneymeets/python-poetry-buildpack"
       }
     ],
-    "stack": "heroku-16"
+    "stack": "heroku-18"
 }
