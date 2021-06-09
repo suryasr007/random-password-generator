@@ -29,9 +29,10 @@ pwg = PasswordGenerator()
 password_generator_args = {
     'minlen': fields.Int(missing=6, validate=lambda val: val > 0),
     'maxlen': fields.Int(missing=16, validate=lambda val: val > 0),
-    'minuchars': fields.Int(missing=1, validate=lambda val: val > 0),
-    'minuchars': fields.Int(missing=1, validate=lambda val: val > 0),
-    'minlchars': fields.Int(missing=1, validate=lambda val: val > 0),
+    'minuchars': fields.Int(missing=1, validate=lambda val: val >= 0),
+    'minlchars': fields.Int(missing=1, validate=lambda val: val >= 0),
+    'minnumbers': fields.Int(missing=1, validate=lambda val: val >= 0),
+    'minschars': fields.Int(missing=1, validate=lambda val: val >= 0),
     'excludeuchars': fields.Str(missing=''),
     'excludelchars': fields.Str(missing=''),
     'excludenumbers': fields.Str(missing=''),
