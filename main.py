@@ -29,9 +29,10 @@ pwg = PasswordGenerator()
 password_generator_args = {
     'minlen': fields.Int(missing=6, validate=lambda val: val > 0),
     'maxlen': fields.Int(missing=16, validate=lambda val: val > 0),
-    'minuchars': fields.Int(missing=1, validate=lambda val: val > 0),
-    'minuchars': fields.Int(missing=1, validate=lambda val: val > 0),
-    'minlchars': fields.Int(missing=1, validate=lambda val: val > 0),
+    'minuchars': fields.Int(missing=1, validate=lambda val: val >= 0),
+    'minlchars': fields.Int(missing=1, validate=lambda val: val >= 0),
+    'minnumbers': fields.Int(missing=1, validate=lambda val: val >= 0),
+    'minschars': fields.Int(missing=1, validate=lambda val: val >= 0),
     'excludeuchars': fields.Str(missing=''),
     'excludelchars': fields.Str(missing=''),
     'excludenumbers': fields.Str(missing=''),
@@ -50,7 +51,7 @@ non_duplicate_args = {
 
 class PasswordGenerator(Resource):
 
-    @use_args(password_generator_args)
+    @use_args(password_generator_args, location="query")
     def get(self, args):
         try:
             pwg.__dict__.update(args)
@@ -63,7 +64,7 @@ class PasswordGenerator(Resource):
 
 class ShufflePassword(Resource):
 
-    @use_args(shuffle_password_args)
+    @use_args(shuffle_password_args, location="query")
     def get(self, args):
         try:
             res = pwg.shuffle_password(password=args["password"], maxlen=args["maxlen"])
@@ -75,7 +76,7 @@ class ShufflePassword(Resource):
 
 class NonDuplicatePassword(Resource):
 
-    @use_args(non_duplicate_args)
+    @use_args(non_duplicate_args, location="query")
     def get(self, args):
         try:
             res = pwg.non_duplicate_password(maxlen=args["maxlen"])
