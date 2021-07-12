@@ -1,5 +1,3 @@
-# -*-coding: utf-8 -*-
-
 """
 Author          : Surya Teja <suryateja1919@gmail.com>
 Description     : Random Password Generator

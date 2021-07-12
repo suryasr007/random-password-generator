@@ -1,37 +1,16 @@
 # Random password Generator
-[![PyPI version](https://img.shields.io/badge/PYPI-V%202.1.0-blue.svg)](https://pypi.org/project/random-password-generator)
+[![PyPI version](https://img.shields.io/badge/PYPI-V%202.2.0-blue.svg)](https://pypi.org/project/random-password-generator)
 [![Build Status](https://travis-ci.org/suryasr007/random-password-generator.svg?branch=master)](https://travis-ci.org/suryasr007/random-password-generator)
-[![Updates](https://pyup.io/repos/github/suryasr007/random-password-generator/shield.svg)](https://pyup.io/repos/github/suryasr007/random-password-generator/)
 
-##### A simple and custom random password generator.
+#### A minimal and custom random password generator.
+ * No dependencies.
  * Generate a simple password of default length 6-16.
  * Generate a password with custom properties.
  * Generate a password from given characters.
  * Generate Non Duplicate Password.
- * Available at https://random-pg.herokuapp.com/
+ * Available at https://random-pg.herokuapp.com/ (API and WEB versions are available @ https://github.com/suryasr007/rpg-web repo)
 
-## API (GET Request)
- * Base_url: https://random-pg.herokuapp.com
- * Generate simple password ```/api/generate```
-   * Optional Attributes can be provided as params  
-     eg: 
-     ```
-      /api/generate?minlen=16  
-      /api/generate?minlen=16&minlchars=5
-     ```
- * Generate a custom password from givin characters
-   * Mandatory attributes can be provided as params  
-     eg: 
-     ```
-      /api/shuffle?password=sdjbfbfB&maxlen=14
-     ```
- * Generate a non duplicate password.  
-   * Mandatory Attribute 'maxlen'  
-     eg:
-     ``` 
-      /nonduplicate?maxlen=14
-     ```
-
+### [NOTICE] API and WEB versions are now moved to https://github.com/suryasr007/rpg-web
 
 ## Usage
  * Install the package.
@@ -63,13 +42,12 @@
 | minnumbers |   Minimum numbers required in password               | 1 |
 | minschars  |   Minimum special characters in the password         | 1 |
 
+
+## Update V2.2.0
+Application is now minimal(No dependencies). The API and WEB version are moved to https://github.com/suryasr007/rpg-web
+
 ## Update V2.1.0
-Application uses [secrets](https://docs.python.org/3/library/secrets.html) module instaed of `random` module **whenever** possible.
-
-
-## Update V2.0.1
-Application is available at following link: https://random-pg.herokuapp.com/
-
+Application uses [secrets](https://docs.python.org/3/library/secrets.html) module instead of `random` module on Python environments above 3.6.
 
 ## Update V1.1.0
 From version 1.1.0, Characters can be excluded from the required password by setting the properties on PasswordGenerator object
@@ -114,7 +92,7 @@ example:
   pwo = PasswordGenerator()
 
   # length of required password
-  pwo.shuffle_password(20)
+  pwo.non_duplicate_password(20)
 ```
 
 ## Contributions
