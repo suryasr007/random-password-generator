@@ -22,6 +22,7 @@ class PasswordGenerator:
     | minlen     |   Minimum length of the password | 6\n
     | maxlen     |   Maximum length of the password | 16\n
     | minuchars  |   Minimum upper case characters required in password | 1\n
+    | maxuchars  |   Maximum upper case characters required in password | 1\n
     | minlchars  |   Minimum lower case characters required in password | 1\n
     | minnumbers |   Minimum numbers required in password               | 1\n
     | minschars  |   Minimum special characters in the password         | 1\n
@@ -40,6 +41,7 @@ class PasswordGenerator:
         self.minlen = 6
         self.maxlen = 16
         self.minuchars = 1
+        self.maxuchars = 16
         self.minlchars = 1
         self.minnumbers = 1
         self.minschars = 1
@@ -84,6 +86,7 @@ class PasswordGenerator:
             self.minlen < 0
             or self.maxlen < 0
             or self.minuchars < 0
+            or self.maxuchars < 0
             or self.minlchars < 0
             or self.minnumbers < 0
             or self.minschars < 0
@@ -119,7 +122,6 @@ class PasswordGenerator:
             for i in range(self.minschars)
         ]
 
-        currentpasslen = len(final_pass)
         all_chars = list(
             set(self._allchars)
             - set(
@@ -130,9 +132,21 @@ class PasswordGenerator:
             )
         )
 
+        upper_char_limit = self.maxuchars - self.minuchars
+
         if len(final_pass) < self.maxlen:
             randlen = randint(self.minlen, self.maxlen)
-            final_pass += [choice(all_chars) for i in range(randlen - currentpasslen)]
+            
+            while len(final_pass) < randlen:
+                current_char = choice(all_chars)
+                
+                if current_char.isupper():
+                    if upper_char_limit <= 0:
+                        continue
+                
+                    upper_char_limit -= 1    
+                
+                final_pass.append(current_char) 
 
         shuffle(final_pass)
         return "".join(final_pass)

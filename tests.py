@@ -26,6 +26,16 @@ class TestRPG(unittest.TestCase):
         pg.excludeuchars="A"
         self.assertNotIn("A",pg.generate())
 
+    def test_generate_with_max_upper_chars(self):
+        """Test generate() for maximum upper chars"""
+        pg = PasswordGenerator()
+        pg.minuchars=0
+        
+        for i in range(0, 10):
+            pg.maxuchars=i
+
+            uppers = list(filter(lambda s: s.isupper() , pg.generate()))
+            self.assertLessEqual(len(uppers), i)
 
 if __name__ == '__main__':
     unittest.main()
