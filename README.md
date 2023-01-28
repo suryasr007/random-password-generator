@@ -38,6 +38,7 @@
 | minlen     |   Minimum length of the password                     | 6 |
 | maxlen     |   Maximum length of the password                     | 16 |
 | minuchars  |   Minimum upper case characters required in password | 1 |
+| maxuchars  |   Maximum upper case characters required in password | 16 |
 | minlchars  |   Minimum lower case characters required in password | 1 |
 | minnumbers |   Minimum numbers required in password               | 1 |
 | minschars  |   Minimum special characters in the password         | 1 |
@@ -71,6 +72,7 @@ example:
   pwo.minlen = 30 # (Optional)
   pwo.maxlen = 30 # (Optional)
   pwo.minuchars = 2 # (Optional)
+  pwo.maxuchars = 8 # (Optional)
   pwo.minlchars = 3 # (Optional)
   pwo.minnumbers = 1 # (Optional)
   pwo.minschars = 1 # (Optional)
