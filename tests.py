@@ -26,18 +26,17 @@ class TestRPG(unittest.TestCase):
         pg.excludeuchars="A"
         self.assertNotIn("A",pg.generate()) 
 
-    def test_generate_with_upper_chars_range(self):
-        """Test generate() for upper chars range"""
+    def test_generate_with_uppercase_chars_range(self):
+        """Test generate() for uppercase chars range"""
         pg = PasswordGenerator()
         
         for i in range(1, 10):
-            pg.minuchars=i - 1
-            pg.maxuchars=i
+            pg.minuchars = i - 1
+            pg.maxuchars = i
 
             uppers = list(filter(lambda s: s.isupper() , pg.generate()))
             self.assertGreaterEqual(len(uppers), i - 1) 
             self.assertLessEqual(len(uppers), i) 
-
 
     def test_set_minuchars_greater_than_maxuchars(self):
         """Test generate() for set minuchars greater than maxuchars"""
