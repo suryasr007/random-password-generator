@@ -98,6 +98,11 @@ class PasswordGenerator:
                 "Minimum length cannot be greater than maximum length. The default maximum length is 16."
             )
 
+        if self.minuchars > self.maxuchars:
+            raise ValueError(
+                "Minimum uppercase chars count cannot be greater than maximum uppercase chars count."
+            )
+
         collectiveMinLength = (
             self.minuchars + self.minlchars + self.minnumbers + self.minschars
         )

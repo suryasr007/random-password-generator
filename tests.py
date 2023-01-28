@@ -38,5 +38,14 @@ class TestRPG(unittest.TestCase):
             self.assertGreaterEqual(len(uppers), i - 1) 
             self.assertLessEqual(len(uppers), i) 
 
+
+    def test_set_minuchars_greater_than_maxuchars(self):
+        """Test generate() for set minuchars greater than maxuchars"""
+        pg = PasswordGenerator()
+        pg.maxuchars = pg.minlchars - 1
+        
+        with self.assertRaisesRegex(ValueError, "Minimum uppercase chars count cannot be greater than maximum uppercase chars count."):
+            pg.generate()
+
 if __name__ == '__main__':
     unittest.main()
