@@ -47,11 +47,12 @@ class PasswordGenerator:
         self.excludelchars = ""
         self.excludenumbers = ""
         self.excludeschars = ""
+        self.includeschars = ""
 
         self.lower_chars = string.ascii_lowercase
         self.upper_chars = string.ascii_uppercase
         self.numbers_list = string.digits
-        self._schars = [
+        self.schars = [
             "!",
             "#",
             "$",
@@ -71,12 +72,6 @@ class PasswordGenerator:
             ">",
             "?",
         ]
-        self._allchars = (
-            list(self.lower_chars)
-            + list(self.upper_chars)
-            + list(self.numbers_list)
-            + self._schars
-        )
 
     def generate(self):
         """Generates a password using default or custom properties"""
@@ -90,10 +85,15 @@ class PasswordGenerator:
         ):
             raise ValueError("Character length should not be negative")
 
+        if (len(self.excludeschars) and len(self.includeschars)):
+            raise ValueError("You can not specify both excludeschars and includeschars.")
+
         if self.minlen > self.maxlen:
             raise ValueError(
                 "Minimum length cannot be greater than maximum length. The default maximum length is 16."
             )
+
+        self.generate_allchars()
 
         collectiveMinLength = (
             self.minuchars + self.minlchars + self.minnumbers + self.minschars
@@ -115,13 +115,13 @@ class PasswordGenerator:
             for i in range(self.minnumbers)
         ]
         final_pass += [
-            choice(list(set(self._schars) - set(self.excludeschars)))
+            choice(list(set(self.schars) - set(self.excludeschars)))
             for i in range(self.minschars)
         ]
 
         currentpasslen = len(final_pass)
         all_chars = list(
-            set(self._allchars)
+            set(self.allchars)
             - set(
                 list(self.excludelchars)
                 + list(self.excludeuchars)
@@ -137,6 +137,16 @@ class PasswordGenerator:
         shuffle(final_pass)
         return "".join(final_pass)
 
+    def generate_allchars(self):
+        if len(self.includeschars):
+            self.schars = list(self.includeschars)
+        self.allchars = (
+            list(self.lower_chars)
+            + list(self.upper_chars)
+            + list(self.numbers_list)
+            + self.schars
+        )
+
     def shuffle_password(self, password, maxlen):
         """Shuffle the given charactes and return a password from given characters."""
         final_pass = [choice(list(password)) for i in range(int(maxlen))]
@@ -145,7 +155,7 @@ class PasswordGenerator:
 
     def non_duplicate_password(self, maxlen):
         """Generate a non duplicate key of given length"""
-        allchars = deepcopy(self._allchars)
+        allchars = deepcopy(self.allchars)
         final_pass = []
         try:
             for i in range(maxlen):

@@ -43,6 +43,17 @@
 | minschars  |   Minimum special characters in the password         | 1 |
 
 
+## Update V2.2.1
+Added option to specify the set of special characters
+
+example:
+``` python
+  pwo = PasswordGenerator()
+
+  pwo.minschars = 1
+  pwo.includeschars = "!$%^" # (Optional)
+```
+
 ## Update V2.2.0
 Application is now minimal(No dependencies). The API and WEB version are moved to https://github.com/suryasr007/rpg-web
 

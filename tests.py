@@ -26,6 +26,12 @@ class TestRPG(unittest.TestCase):
         pg.excludeuchars="A"
         self.assertNotIn("A",pg.generate())
 
+    def test_include_schars(self):
+        """Test generate() for specific special chars"""
+        pg = PasswordGenerator()
+        pg.minschars = 1
+        pg.includeschars = "["
+        self.assertIn("[",pg.generate())
 
 if __name__ == '__main__':
     unittest.main()
