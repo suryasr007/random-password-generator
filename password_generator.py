@@ -28,11 +28,11 @@ class PasswordGenerator:
 
     Methods implemented in this class are
 
-    generate() : Generates a password using default or custom propertiesself.
+    generate() : Generates a password using default or custom properties.
 
-    shuffle_password(password, length) : Shuffle the given charactes and return a password from given characters.
+    shuffle_password(password, length) : Shuffle the given charactes to return a password.
 
-    non_duplicate_password(length) : Generate a non duplicate key of givrn length
+    non_duplicate_password(length) : Generate a non-duplicate key of given length
 
     """
 
@@ -138,13 +138,13 @@ class PasswordGenerator:
         return "".join(final_pass)
 
     def shuffle_password(self, password, maxlen):
-        """Shuffle the given charactes and return a password from given characters."""
+        """Shuffle the given charactes to return a password."""
         final_pass = [choice(list(password)) for i in range(int(maxlen))]
         shuffle(final_pass)
         return "".join(final_pass)
 
     def non_duplicate_password(self, maxlen):
-        """Generate a non duplicate key of given length"""
+        """Generate a non-duplicate key of given length"""
         allchars = deepcopy(self._allchars)
         final_pass = []
         try:
@@ -154,7 +154,7 @@ class PasswordGenerator:
                 final_pass.append(character)
                 allchars.pop(element_index)
         except IndexError as e:
-            raise ValueError("Length should less than 77 characters.")
+            raise ValueError("Length should be less than 77 characters.")
 
         shuffle(final_pass)
         return "".join(final_pass)
